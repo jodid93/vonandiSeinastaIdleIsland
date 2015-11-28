@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.5.RELEASE</version>
+        <version>1.3.0.RELEASE</version>
     </parent>
 
 	<beans xmlns="http://www.springframework.org/schema/beans"
@@ -29,21 +29,23 @@
     <context:component-scan base-package="com.mkyong.web" />
 
     <bean
-	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	<property name="prefix">
-		<value>/WEB-INF/pages/</value>
-	</property>
-	<property name="suffix">
-		<value>.jsp</value>
-	</property>
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value> <!-- það var pages í stað jsp-->
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
     </bean>
-
-    <mvc:resources mapping="/resources/**" location="../../resources/static/javascript"
+	
+	
+    <mvc:resources mapping="/resources/**" location="../../resources/static/"
 	cache-period="31556926"/>
 
     <mvc:annotation-driven />
 	
-</beans>
+	</beans>
+
     <dependencies>
 
         <dependency>
@@ -71,14 +73,19 @@
             <artifactId>jstl</artifactId>
         </dependency>
         
-        <dependency>
+	        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.4-1201-jdbc41</version>
         </dependency>
         
+        <!--<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		    <version>1.3.0.RELEASE</version>
+		</dependency> -->
         
-
+        
     </dependencies>
 
     <build>

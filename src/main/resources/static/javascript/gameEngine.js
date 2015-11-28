@@ -622,6 +622,26 @@ gameEngine.prototype.chanceDisplayToUpgradeslvl2 = function(){
 }
 
 
+gameEngine.prototype.exitToSettings = function(){
+    if(Math.round((this.userdata.settings['audio-slider']/100) * 100) / 100 !== 0){
+
+        this.audio.exit.volume = Math.round((this.userdata.settings['audio-slider']/100) * 100) / 100;
+        this.audio.exit.cloneNode().play();
+    }
+    
+    this.userdata.score = this.score;
+    
+    var form  = $('.form-settings');
+    var submitString = form[0][0];
+    var score = form[0][1];
+    var checkFr = form[0][2];
+
+    submitString.value = this.userdata.createJSONstring();
+    score.value = this.score;
+    checkFr.value = (this.isFriend).toString();
+    form.submit();
+};
+
 
 gameEngine.prototype.chanceDisplayToSettings = function(){
     if (this.isFriend) {    

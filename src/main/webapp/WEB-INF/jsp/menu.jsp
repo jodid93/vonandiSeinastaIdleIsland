@@ -7,44 +7,43 @@
 
     <head>
         <title>LogIn</title>
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'></link>
+        <link rel='stylesheet' href='../../resources/static/css/base.css'></link>
+        <link rel='stylesheet' href='../../resources/static/css/autheration.css'></link>
     </head>
+    
     <body>
-	
-	<div class="col-md-offset-2">
-		<h1>MENU</h1>
-		
-		<p>${skilabod}</p>
-		
-		<br>
-		
-		<form action="/settings" method="post">
-			<p><input type="submit" value="Settings" /></p>
-		</form>
-		
-		<form action="/highScores" method="get">
-			<p><input type="submit" value="Highscores" /></p>
-		</form>
-		
-		<form action="/play" method="post">
-			<p><input type="submit" value="Play" /></p>
-		</form>
-	    
-	    <form action="/addFriend" method="get">
-			<p><input type="submit" value="Add Friend" /></p>
-		</form>
-		
-		<form action="/viewFriends" method="get">
-			<p><input type="submit" value="View Friends" /></p>
-		</form>
-		
-		<hr>
-		<form action="/logout" method="get">
-			<p><input type="submit" value="Log out" /></p>
-		</form>
-		
-	    </body>
-	</div>
-	
-    <footer>Class HBV501G, University of Iceland, Fall 2015</footer>
+	<div class="menu">
+		<h1>Menu</h1>
+		<div class="sand"></div>
+		<div class="island">
+			<div class="options">
+				<div class="text">
+				
+					<form action="/play" method="post">
+						<input type="submit" value="Play" />
+					</form>
+					
+					<form action="/highScores" method="get">
+						<input type="submit" value="Highscores" />
+					</form>
+					
+				    <form action="/addFriend" method="get">
+						<input type="submit" value="Add Friend" />
+					</form>
+					
+					<form action="/viewFriends" method="get">
+						<input type="submit" value="View Friends" />
+					</form>
+					
+					<form action="/settings" method="post">
+						<input type="submit" value="Settings" />
+					</form>
+					<br>
+					<form action="/logout" method="get">
+						<input type="submit" value="Log out" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

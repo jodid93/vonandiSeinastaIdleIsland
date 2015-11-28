@@ -7,32 +7,33 @@
 
     <head>
         <title>LogIn</title>
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'></link>
+        <link rel='stylesheet' href='../../resources/static/css/base.css'></link>
+        <link rel='stylesheet' href='../../resources/static/css/autheration.css'></link>
     </head>
     <body>
-	
-	<div class="col-md-offset-2">
-		<form:errors path="notandi.*"/>
-	
-	    <h1>Please enter your username and password</h1>
-	    
-	    <form action="/login" method="post">
-	    <h3>${skilabod}</h3>
-			<p>User name: <input type="text" name="UserName" /></p>
+		<div class="padding"> 
+			<h1>Log in</h1>
 			
-			<p>Password: <input type="password" name="PW" /></p>
-			
-			<p><input type="submit" value="Login" /></p>
-			
-		</form>
-		
-		
-		<form action="/newRegestry" method="post">
-			
-			<p><input type="submit" value="New User" /></p>
-			
-		</form>
-    </div>
+			<div class="middle">
+				<form:errors path="notandi.*" class="form1"/>
+			    
+			    <form action="/login" method="post">
+			    	<h3>${skilabod}</h3>
+					<input class="login" type="text" name="UserName" placeholder="username"/>
+					
+					<input class="login" type="password" name="PW" placeholder="password"/>
+					
+					<input type="submit" value="Login" />
+					
+				</form>
+				
+				
+				<form action="/newRegestry" method="post" class="form2">
+					
+					<input type="submit" value="Create new User" />
+					
+				</form>
+		    </div>
+		</div>
     </body>
-    <footer>Class HBV501G, University of Iceland, Fall 2015</footer>
 </html>

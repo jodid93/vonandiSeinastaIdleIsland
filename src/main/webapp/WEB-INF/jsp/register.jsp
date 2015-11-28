@@ -7,28 +7,27 @@
 
     <head>
         <title>User Page</title>
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'></link>
+    	<link rel='stylesheet' href='../../resources/static/css/base.css'></link>
+        <link rel='stylesheet' href='../../resources/static/css/autheration.css'></link>
     </head>
     <body>
 
-	<div class="col-md-offset-2">
-	    <h1>New user</h1>
-	    
-	    <h1>Please enter a username and password</h1>
+	<h1>Create User</h1>
+
+	<div class="middle">
 	    
 	    <h3>${skilabod}</h3>
 	    <form action="/registered" method="post">
-			<p>User name: <input type="text" name="UserName" /></p>
+			<input type="text" name="UserName" placeholder="username"/>
 			
-			<p>Password: <input type="text" name="PW" /></p>
+			<input type="password" name="PW" placeholder="password" />
 			
-			<p><input type="submit" value="Submit" /></p>
+			<input type="submit" value="Create" />
 			
 		</form>
 	    
-		<hr>
 		<form action="/login" method="get">
-			<p><input type="submit" value="Back" /></p>
+			<input type="submit" value="Back to login" />
 		</form>
 	</div>
     </body>

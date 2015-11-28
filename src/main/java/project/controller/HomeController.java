@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import project.service.UserInfo;
 import project.service.DBconnector;
@@ -27,19 +29,26 @@ public class HomeController {
 		
 		session.setAttribute("loggedInUser", null);
 
-		return "redirect:/login";
+		return "/login";
 		
 	}
 	
+	/*@RequestMapping(value = "/resturl", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    @Transactional(value = "jpaTransactionManager")
+    public @ResponseBody List<DomainObject> findByResourceID(@PathParam("resourceID") String resourceID) {*/
+	
 	@RequestMapping(value="/")
 	public String redirectToLogin(){
-		
+		//System.out.print("1001");
 		return "redirect:/login";
 	}
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String displayLogInPage(Model model, HttpSession session) throws SQLException{
 		this.DBconnector = new DBconnector();
+		/*ModelAndView jsp = new ModelAndView("login1");
+		System.out.print("hallo");*/
 		return "login";
 	}
 	
