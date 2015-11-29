@@ -86,6 +86,8 @@ public class HomeController {
 			return "redirect:/login";
 		}
 		
+		String gamestate = this.util.getGameState( this.DBconnector, session );
+		model.addAttribute("gamestate", gamestate);
 
 		session.getAttribute("loggedInUser");
 		model.addAttribute("skilabod", session.getAttribute("loggedInUser")+ " er skradur inn");
@@ -100,6 +102,9 @@ public class HomeController {
 			return "redirect:/login";
 		}
 		
+		String gamestate = this.util.getGameState( this.DBconnector, session );
+		model.addAttribute("gamestate", gamestate);
+		
 		return "addFriend";
 	}
 	
@@ -109,6 +114,9 @@ public class HomeController {
 		if(session.getAttribute("loggedInUser") == null){
 			return "redirect:/login";
 		}
+		
+		String gamestate = this.util.getGameState( this.DBconnector, session );
+		model.addAttribute("gamestate", gamestate);
 		
 		String m; 
 		
@@ -141,6 +149,9 @@ public class HomeController {
 			model.addAttribute("skilabod", "Username contains ','");
 			return "register";
 		}
+		
+		String gamestate = this.util.getGameState( this.DBconnector, session );
+		model.addAttribute("gamestate", gamestate);
 		
 		if(this.DBconnector.registrationSuccess(notandi.getUserName(), notandi.getPW())){
 			this.DBconnector.createNewUser(notandi.getUserName(), notandi.getPW());
@@ -199,6 +210,9 @@ public class HomeController {
 			return "redirect:/login";
 		}
 		
+		String gamestate = this.util.getGameState( this.DBconnector, session );
+		model.addAttribute("gamestate", gamestate);
+		
 		String[] users = null;
 		int[] scores = null;
 		String data = null;
@@ -220,6 +234,8 @@ public class HomeController {
 			System.out.println("user = " + users[i]+" score = "+scores[i]);
 		}
 		
+		
+		
 		model.addAttribute("data", userScores);
 		String Message = "inn i highScores";
 		model.addAttribute("skilabod", Message);
@@ -230,11 +246,13 @@ public class HomeController {
 	public String highScores( Model model, HttpSession session){
 		
 		
+		
 		if(session.getAttribute("loggedInUser") == null){
 			return "redirect:/login";
 		}
 		
-		
+		String gamestate = this.util.getGameState( this.DBconnector, session );
+		model.addAttribute("gamestate", gamestate);
 		
 		String Message = "inn i highScores";
 		model.addAttribute("skilabod", Message);
@@ -249,6 +267,9 @@ public class HomeController {
 		if(session.getAttribute("loggedInUser") == null){
 			return "redirect:/login";
 		}
+		
+		String gamestate = this.util.getGameState( this.DBconnector, session );
+		model.addAttribute("gamestate", gamestate);
 		
 		String friendList = this.DBconnector.findFriendList((String)session.getAttribute("loggedInUser"));
 		String[] list = this.util.parseFriendsList(friendList);
@@ -283,16 +304,19 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="/refresh", method = RequestMethod.POST)
-	public String goggafaggi(@ModelAttribute("submitString3") String submitString, @ModelAttribute("score3") String score, Model model, HttpSession session) throws SQLException{
-		
-		/*System.out.println("halo er ekki thad godur leikur");
+	public String goggafaggi(
+				@ModelAttribute("submitString3") String submitString, 
+				@ModelAttribute("score3") String score, Model model,
+				HttpSession session) throws SQLException{
+
+		System.out.println("halo er ekki thad godur leikur");
 		if(session.getAttribute("loggedInUser") == null){
 			return "redirect:/login";
 		}
 		
 		String UN = session.getAttribute("loggedInUser").toString();
 		    
-		this.DBconnector.setGameState(UN, submitString, score);*/
+		this.DBconnector.setGameState(UN, submitString, score);
 		
 		return "redirect:/play";
 	}
@@ -330,6 +354,5 @@ public class HomeController {
 		  } else {
 			  return "redirect:/viewFriends";
 		  }
+		}
 	}
-	
-}

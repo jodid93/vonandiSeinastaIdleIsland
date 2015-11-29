@@ -29,7 +29,7 @@ public class DBconnector {
 		try {
 
 			this.connection = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/postgres", "postgres","123");
+					"jdbc:postgresql://localhost:5432/postgres3", "postgres","M39JPD");
 
 		} catch (SQLException e) {
 

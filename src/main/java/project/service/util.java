@@ -1,5 +1,9 @@
 package project.service;
 
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpSession;
+
 public class util {
 
 	public boolean isUserAlreadyFriend(String [] friendList, String friend ){
@@ -54,5 +58,18 @@ public class util {
 		}
 		
 		return returning;
+	}
+	
+	
+	public String getGameState(DBconnector dbconnector, HttpSession session){
+		String UN = session.getAttribute("loggedInUser").toString();
+		String gamestate = "";
+		try {
+			gamestate = dbconnector.getGameState(UN);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return gamestate;
 	}
 }

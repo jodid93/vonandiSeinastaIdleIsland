@@ -1,8 +1,10 @@
+
+
 var g_audio   = {};
 
 function AudioPreload(callback){
 	var requiredSounds = {
-		Theme	: "game/sounds/MenuTheme.ogg"
+		Theme	: "../../../resources/static/javascript/sounds/MenuTheme.ogg"
 	};
 
 	soundsPreload(requiredSounds, g_audio, callback);
@@ -16,10 +18,10 @@ function init(){
 
     var data = JSON.parse(userData);
 
-    volume = data.settings['audio-slider']
+    volume = data.settings['audio-slider'];
     console.log(volume)
 		AudioPreload(function(){
-        Loop();
+            Loop();
 		});
 }
 
