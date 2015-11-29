@@ -12,6 +12,10 @@
     </head>
     
     <body>
+    <p hidden="hidden" id="gamestate">${gamestate}</p> 
+	<script type="text/javascript" src="../../../resources/static/javascript/jquery.js"></script>
+	<script type="text/javascript" src="../../../resources/static/javascript/soundsPreload2.js"></script>
+	<script type="text/javascript" src="../../../resources/static/javascript/playTheme.js"></script>
 	<div class="menu">
 		<h1>Menu</h1>
 		<div class="sand"></div>

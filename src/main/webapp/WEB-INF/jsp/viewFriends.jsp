@@ -11,6 +11,10 @@
         <link rel='stylesheet' href='../../resources/static/css/viewFriends.css'></link>
     </head>
     <body>
+    	<p hidden="hidden" id="gamestate">${gamestate}</p> 
+	    <script type="text/javascript" src="../../../resources/static/javascript/jquery.js"></script>
+	    <script type="text/javascript" src="../../../resources/static/javascript/soundsPreload2.js"></script>
+		<script type="text/javascript" src="../../../resources/static/javascript/playTheme.js"></script>
 	
 	<h1>View Friends</h1>
 
