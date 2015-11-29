@@ -41,55 +41,14 @@
 		  	</tr>
 		  </thead>
 		  
-		  <tr>
-		  	<td>${user1}</td>
-		  	<td>${score1}</td>
-		  </tr>
+		   <c:forEach items="${data}" var="dats">
+		   		<tr>
+			  		<th>${dats.key}</th>
+			  		<th>${dats.value}</th>
+			  	</tr>
+		    </c:forEach>
+		    
 		  
-		  <tr>
-		  	<td>${user2}</td>
-		  	<td>${score2}</td>
-		  </tr>
-		  
-		  <tr>
-		  	<td>${user3}</td>
-		  	<td>${score3}</td>
-		  </tr>
-		  
-		  <tr>
-		  	<td>${user4}</td>
-		  	<td>${score4}</td>
-		  </tr>
-		  
-		  <tr>
-		  	<td>${user5}</td>
-		  	<td>${score5}</td>
-		  </tr>
-		  
-		  <tr>
-		  	<td>${user6}</td>
-		  	<td>${score6}</td>
-		  </tr>
-		  
-		  <tr>
-		  	<td>${user7}</td>
-		  	<td>${score7}</td>
-		  </tr>
-		  
-		  <tr>
-		  	<td>${user8}</td>
-		  	<td>${score8}</td>
-		  </tr>
-		  
-		  <tr>
-		  	<td>${user9}</td>
-		  	<td>${score9}</td>
-		  </tr>
-		  
-		  <tr>
-		  	<td>${user10}</td>
-		  	<td>${score10}</td>
-		  </tr>
 		</table>
     </div>
 

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 UserData2.prototype.userName = undefined;
 UserData2.prototype.upgrades1 = undefined;
@@ -14,7 +14,7 @@ UserData2.prototype.score = undefined;
 //constructor
 function UserData2(userDataFromDB){
 
-	console.log(userDataFromDB)
+	
 	var data = JSON.parse(userDataFromDB);
 
 	this.userName = data.userName;
@@ -27,9 +27,9 @@ function UserData2(userDataFromDB){
 	this.timestamp = data.timestamp;
 	this.score = data.score;
 
-	console.log('inn í userData constr', data);
+	
 	//implements
-};
+}
 
 
 //getters
@@ -65,11 +65,11 @@ UserData2.prototype.getTimestamp = function(){
 
 UserData2.prototype.setupgrades1 = function(upgrades1){
 	this.upgrades1 = upgrades1;
-}
+};
 
 UserData2.prototype.setupgrades2 = function(upgrades2){
 	this.upgrades2 = upgrades2;
-}
+};
 
 UserData2.prototype.setCurrency = function(currency){
 	this.currency = currency;
@@ -85,20 +85,20 @@ UserData2.prototype.setCurrFactor = function(currFactor){
 
 UserData2.prototype.setTreeFactor = function(treeFactor){
 	this.treeFactor = treeFactor;
-}
+};
 
 UserData2.prototype.setTimestamp = function(timestamp){
 	this.timestamp = timestamp;
 };
 
 UserData2.prototype.createJSONstring = function(){
-				 
+
 	var string = '{"userName": "'+this.userName+'","upgrades1": [['+this.upgrades1[0].toString()+'],['+this.upgrades1[1].toString()+'],['+this.upgrades1[2].toString()+']],"upgrades2": [['+this.upgrades2[0].toString()+'],['+this.upgrades2[1].toString()+'],['+this.upgrades2[2].toString()+']], "currency": '+this.currency+', "settings": {"audio-slider":'+this.settings['audio-slider']+'}, "currFactor": '+this.currFactor+', "treeFactor": '+this.treeFactor+', "timestamp": '+ Date.now() +', "score": '+this.score+' }';
 
-	console.log(string);
+	
 	return string;
 
-}
+};
 
 
 

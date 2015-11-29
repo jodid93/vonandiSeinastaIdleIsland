@@ -39,17 +39,17 @@ var upgradePos = {
 var veidistong = {
   x:islandPos.x+580,
   y:islandPos.y
-}
+};
 
 
 var birdPos = {
   x:treePos.x+300,
   y:treePos.y-140
-}
+};
 
 
 
-var leikur = undefined;
+var leikur;
 
 var user;
 
@@ -76,6 +76,7 @@ function imagePreload(callback){
       coconut       : "/../../resources/static/javascript/images/game-coconut-money.png",
       exit          : "/../../resources/static/javascript/images/game-button-exit.png",
       island        : "/../../resources/static/javascript/images/game-sand-3-01.png",
+      pile          : "/../../resources/static/javascript/images/game-coconut-heap.png",
 
 
       item1upgrade1         : "/../../resources/static/javascript/images/item1upgrade1.png",
@@ -140,11 +141,21 @@ function imagePreload(callback){
       veidistong3   : "/../../resources/static/javascript/images/veidistong_animation-upgrade-3.png",
 
 
-      mole2         : "/../../resources/static/javascript/images/mole_animation-upgrade-1.png",
-      mole1         : "/../../resources/static/javascript/images/mole_animation-upgrade-2.png",
+      mole1         : "/../../resources/static/javascript/images/mole_animation-upgrade-1.png",
+      mole2         : "/../../resources/static/javascript/images/mole_animation-upgrade-2.png",
       mole3         : "/../../resources/static/javascript/images/mole_animation-upgrade-3.png",
 
-      molekall      : "/../../resources/static/javascript/images/molekall_animation.png"
+      molekall      : "/../../resources/static/javascript/images/molekall_animation.png",
+      molekall1     : "/../../resources/static/javascript/images/molekall_animation-upgrade-1.png",
+      molekall2     : "/../../resources/static/javascript/images/molekall_animation-upgrade-2.png",
+      molekall3     : "/../../resources/static/javascript/images/molekall_animation-upgrade-3.png",
+
+      miner1        : "/../../resources/static/javascript/images/miner_animation-upgrade-1.png",
+      miner2        : "/../../resources/static/javascript/images/miner_animation-upgrade-2.png",
+      miner3        : "/../../resources/static/javascript/images/miner_animation-upgrade-3.png",
+
+      
+      moleheap      : "/../../resources/static/javascript/images/game-coconut-heap.png"
 
 
 
@@ -182,6 +193,7 @@ _updateClocks = function (frameTime) {
 _iterCore = function (dt) {
 
     leikur.update(dt);
+    leikur.saveAndRefresh(dt)
     leikur.render();
     leikur.playTheme();
     Loop();
@@ -221,7 +233,7 @@ Loop = function () {
 
 
 function init(){
-  console.log('starting');
+  
 
   canvasInit();
 
@@ -229,11 +241,11 @@ function init(){
 
     AudioPreload(function(){
 
-      console.log('all preloads done');
+      
 
             user = $('#user')['0'].innerHTML;
             userData = $('#userData')['0'].innerHTML;
-            console.log(userData.toString())
+            
 
             var isFriend = $('#isFriend')['0'].innerHTML;
             if (isFriend === 'false') {
@@ -243,18 +255,20 @@ function init(){
             }
 
       leikur = new gameEngine2(g_images, g_audio, user, userData, isFriend);
-      console.log('game engine done...starting game');
+      
 
-      console.log("HTML buttons setup [begin] " );
-      console.log(userData);
+      
+      
+      //debugger;
+      
       //debugger;
       Buttons.init( leikur, isFriend);
-      console.log("HTML buttons setup [done] " );
+      
 
       document.onmousedown = function(e){
 
         leikur.receiveInputs(e);
-      }
+      };
       
       Loop();
 

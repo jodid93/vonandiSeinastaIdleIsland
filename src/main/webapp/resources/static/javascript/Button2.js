@@ -35,15 +35,15 @@ Button2.prototype.getPosition = function(){
 			y: this.topY,
 			width: this.width,
 			height: this.height};
-}
+};
 
 Button2.prototype.getImage = function(){
 	return this.image;
-}
+};
 
 Button2.prototype.getAudioPath = function(){
 	//implement plz
-}
+};
 
 Button2.prototype.drawAt = function (ctx, x, y, w, h) {
 	ctx.drawImage(this.image, x, y, w, h);

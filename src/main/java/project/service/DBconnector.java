@@ -26,7 +26,7 @@ public class DBconnector {
 		try {
 
 			this.connection = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/postgres3", "postgres","M39JPD");
+					"jdbc:postgresql://localhost:5432/postgres", "postgres","123");
 
 		} catch (SQLException e) {
 
@@ -386,6 +386,45 @@ public String findHighScoreForUser(String user, String[] friends) throws SQLExce
     
     System.out.println(data);
     return data;
+}
+
+public void setGameState(String UN, String submitString, String score) throws SQLException {
+	PreparedStatement pst;
+    Statement stmt = null;
+    
+    try {
+    	pst = this.connection.prepareStatement("UPDATE gamestate SET gamestate = ? WHERE id = ?");
+		
+    	pst.setString(1, submitString);
+    	pst.setString(2, UN);
+    	
+        pst.executeUpdate();
+    
+    } catch (SQLException e ) {
+        System.out.println("find user failed");
+        System.out.println(e);
+    } finally {
+        if (stmt != null) { stmt.close(); }
+    }
+    
+    stmt = null;
+    
+    try {
+    	pst = this.connection.prepareStatement("UPDATE gamestate SET score = ? WHERE id = ?");
+		
+    	pst.setInt(1, Integer.parseInt(score));
+    	pst.setString(2, UN);
+    	
+        pst.executeUpdate();
+    
+    } catch (SQLException e ) {
+        System.out.println("find user failed");
+        System.out.println(e);
+    } finally {
+        if (stmt != null) { stmt.close(); }
+    }
+    
+	
 }
 
 

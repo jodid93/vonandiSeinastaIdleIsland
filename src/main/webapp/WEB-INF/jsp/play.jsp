@@ -7,8 +7,8 @@
   <head>
     <meta charset="utf-8"/>
     <title>IDLE ISLAND</title>
-    <link rel="stylesheet" href="/../../resources/static/css/base.css"/>
-    <link rel="stylesheet" href="/../../resources/static/css/game.css"/>
+    <link rel="stylesheet" href="/../../../resources/static/css/base.css"/>
+    <link rel="stylesheet" href="/../../../resources/static/css/game.css"/>
   </head>
   <body>
     <p hidden="hidden" id="user">${user}</p>
@@ -29,7 +29,8 @@
       <div class="arrows-buttons"></div>
       <!--div.quit-->
     </div>
-    <form method="post" action="/exit" id="exit" hidden="hidden">
+    
+    <form method="POST" action="/exit" id="exit" hidden="hidden">
       <input type="text" id="submitString" name="submitString"/>
       <input type="text" id="score" name="score"/>
       <input type="hidden" id="checkFriend" name="checkFriend"/>
@@ -37,10 +38,10 @@
         <button class="game-exit"></button>
       </div>
     </form>
+    
     <form method="post" action="/refresh" id="save" hidden="hidden">
-      <input type="text" id="submitString" name="submitString"/>
-      <input type="text" id="score" name="score"/>
-      <input type="hidden" id="checkFriend" name="checkFriend"/>
+      <input type="text" id="submitString3" name="submitString3"/>
+      <input type="text" id="score3" name="score3"/>
       <button>send</button>
     </form>
     
@@ -51,17 +52,17 @@
     	<div class="mine-wall"></div>
     	<div class="mine-floor"></div>
     </div>
- 	<script src="/../../resources/static/javascript/jquery.js"></script>
-    <script src="/../../resources/static/javascript/imagesPreload2.js"></script>
-    <script src="/../../resources/static/javascript/soundsPreload2.js"></script>
-    <script src="/../../resources/static/javascript/Coconut.js"></script>
-    <script src="/../../resources/static/javascript/Sprite.js"></script>
-    <script src="/../../resources/static/javascript/htmlButtons.js"></script>
-    <script src="/../../resources/static/javascript/Button2.js"></script>
-    <script src="/../../resources/static/javascript/Display2.js"></script>
-    <script src="/../../resources/static/javascript/UserData2.js"></script>
-    <script src="/../../resources/static/javascript/Calculator2.js"></script>
-    <script src="/../../resources/static/javascript/gameEngine2.js"></script>
-    <script src="/../../resources/static/javascript/Initialize2.js"></script>
+ 	<script src="/../../../resources/static/javascript/jquery.js"></script>
+    <script src="/../../../resources/static/javascript/imagesPreload2.js"></script>
+    <script src="/../../../resources/static/javascript/soundsPreload2.js"></script>
+    <script src="/../../../resources/static/javascript/Coconut.js"></script>
+    <script src="/../../../resources/static/javascript/Sprite.js"></script>
+    <script src="/../../../resources/static/javascript/htmlButtons.js"></script>
+    <script src="/../../../resources/static/javascript/Button2.js"></script>
+    <script src="/../../../resources/static/javascript/Display2.js"></script>
+    <script src="/../../../resources/static/javascript/UserData2.js"></script>
+    <script src="/../../../resources/static/javascript/Calculator2.js"></script>
+    <script src="/../../../resources/static/javascript/gameEngine2.js"></script>
+    <script src="/../../../resources/static/javascript/Initialize2.js"></script>
   </body>
 </html>

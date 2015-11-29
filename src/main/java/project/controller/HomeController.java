@@ -1,6 +1,8 @@
 package project.controller;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -186,13 +188,14 @@ public class HomeController {
 		
 		users = this.util.extractUsersFromData(data);
 		scores = this.util.extractScoresFromData(data);
+		LinkedHashMap<String, Integer> userScores = new LinkedHashMap<String, Integer>();
 		
 		for(int i = 0; i<users.length;i++){
-			model.addAttribute("user"+(i+1), users[i]);
-			model.addAttribute("score"+(i+1), scores[i]);
+			userScores.put(users[i],scores[i]);
+			System.out.println("user = " + users[i]+" score = "+scores[i]);
 		}
 		
-		
+		model.addAttribute("data", userScores);
 		String Message = "inn i highScores";
 		model.addAttribute("skilabod", Message);
 		return "highScores";
@@ -215,16 +218,58 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="/viewFriends", method = RequestMethod.GET)
-	public String viewFriends( Model model, HttpSession session){
+	public String viewFriends( Model model, HttpSession session) throws SQLException{
 		
 		
 		if(session.getAttribute("loggedInUser") == null){
 			return "redirect:/login";
 		}
 		
-		String Message = "view friends";
-		model.addAttribute("skilabod", Message);
+		String friendList = this.DBconnector.findFriendList((String)session.getAttribute("loggedInUser"));
+		String[] list = this.util.parseFriendsList(friendList);
+		
+		model.addAttribute("users", list);
+		for(int i = 0; i<list.length;i++){
+			model.addAttribute("user"+(i+1), list[i]);
+			System.out.println(list[i]);
+		}
+		
 		return "viewFriends";
+	}
+	
+	/*@RequestMapping(value="/viewFriends", method = RequestMethod.POST)
+	public String chooseFriend(@ModelAttribute("who") String chosen, Model model, HttpSession session) throws SQLException{
+		
+		
+		if(session.getAttribute("loggedInUser") == null){
+			return "redirect:/login";
+		}
+		
+		String gamestate = this.DBconnector.getGameState(chosen);
+		model.addAttribute("user",chosen);
+		model.addAttribute("userData", gamestate);
+		model.addAttribute("isFriend", true);
+		
+		return "play";
+	}
+	*/
+
+	
+	
+	
+	@RequestMapping(value="/refresh", method = RequestMethod.POST)
+	public String goggafaggi(@ModelAttribute("submitString3") String submitString, @ModelAttribute("score3") String score, Model model, HttpSession session) throws SQLException{
+		
+		/*System.out.println("halo er ekki thad godur leikur");
+		if(session.getAttribute("loggedInUser") == null){
+			return "redirect:/login";
+		}
+		
+		String UN = session.getAttribute("loggedInUser").toString();
+		    
+		this.DBconnector.setGameState(UN, submitString, score);*/
+		
+		return "redirect:/play";
 	}
 	
 	@RequestMapping(value="/play")
@@ -245,5 +290,21 @@ public class HomeController {
 		return "play";
 	}
 	
+	@RequestMapping(value="/exit", method = RequestMethod.POST)
+	public String exitGame(@ModelAttribute("submitString") String submitString, @ModelAttribute("score") String score, @ModelAttribute("checkFriend") boolean checkFriend, Model model, HttpSession session) throws SQLException{
+		
+		if(session.getAttribute("loggedInUser") == null){
+			return "redirect:/login";
+		}
+		
+		String UN = session.getAttribute("loggedInUser").toString();
+		if (checkFriend) {
+		    
+		    this.DBconnector.setGameState(UN, submitString, score);
+		    	return "redirect:/menu";
+		  } else {
+			  return "redirect:/viewFriends";
+		  }
+	}
 	
 }

@@ -13,11 +13,13 @@
 	
 	<div class="col-md-offset-2">
 	    <h1>View Friends</h1>
-	    
-	    <br>
-	    <p>${skilabod}</p>
-	    
-	    
+	   	
+	   	 <c:forEach items="${users}" var="user">
+	   	 	<form action="/viewFriends" method="post">
+				<p><input type="submit" name="who" value="${user}" /></p>
+			</form>
+	    </c:forEach>
+	   	
 		<hr>
 		<form action="/menu" method="get">
 			<p><input type="submit" value="Back" /></p>
