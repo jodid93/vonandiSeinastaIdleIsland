@@ -7,16 +7,20 @@
 
     <head>
         <title>User Page</title>
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'></link>
+       	<link rel='stylesheet' href='../../resources/static/css/base.css'></link>
+        <link rel='stylesheet' href='../../resources/static/css/viewFriends.css'></link>
     </head>
     <body>
 	
-	<div class="col-md-offset-2">
-	    <h1>View Friends</h1>
+	<h1>View Friends</h1>
+
+	<div class="middle">
+
+		<hr>
 	   	
 	   	 <c:forEach items="${users}" var="user">
 	   	 	<form action="/viewFriends" method="post">
-				<p><input type="submit" name="who" value="${user}" /></p>
+				<input type="submit" name="who" value="View ${user}'s Island" />
 			</form>
 	    </c:forEach>
 	   	

@@ -15,7 +15,7 @@
 	<div class="menu">
 		<h1>Menu</h1>
 		<div class="sand"></div>
-		<div class="island">
+		<div class="island padd">
 			<div class="options">
 				<div class="text">
 				

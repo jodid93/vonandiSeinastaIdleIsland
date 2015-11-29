@@ -7,23 +7,20 @@
 
     <head>
         <title>Add Friends</title>
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'></link>
+        <link rel='stylesheet' href='../../resources/static/css/base.css'></link>
+        <link rel='stylesheet' href='../../resources/static/css/addFriend.css'></link>
     </head>
     <body>
-    <div class="col-md-offset-2">
-		<h2> Enter a username of a user you know</h2>
+    <h1>Add Friend</h1>
+    <div class="middle">
 	    <form action="/addFriend" method="post">
 	    	<h3>${skilabod}</h3>
-			<p>Username: <input type="text" name="UserName" /></p>
+			<input type="text" name="UserName" placeholder="Enter friend's name..." />
 			<p><input type="submit" value="Add +" /></p>
-			
 		</form>
-		
-		<hr>
 		<form action="/menu" method="get">
 			<p><input type="submit" value="Back" /></p>
 		</form>
 	</div>
     </body>
-    <footer>Class HBV501G, University of Iceland, Fall 2015</footer>
 </html>

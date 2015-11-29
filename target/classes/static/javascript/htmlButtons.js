@@ -144,7 +144,7 @@ var Buttons = (function() {
 	}
 
 	function buildButtons(){
-		buttons.upgrade = elementCreator('button','btnupgrade','btnupgrade');
+		buttons.upgrade = elementCreator('button','upgrade','upgrade');
 		buttons.settings = elementCreator('button','gamebtn-settings','gamebtn-settings');
 		buttons.quit = elementCreator('button','quit','quit hidden');
 		buttons.gameExit = elementCreator('button','game-exit','game-exit');

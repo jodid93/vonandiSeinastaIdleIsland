@@ -78,6 +78,10 @@ h1{
   padding: 60px;
 }
 
+.padd{
+  padding-bottom: 100px;
+}
+
 body {
   /*position: absolute;
   top: 0px;
@@ -121,6 +125,17 @@ hr {
   width: 90%;
   height: auto;
   z-index: 2; }
+
+ div.middle {
+  display: block;
+  /*padding:50px;*/
+  margin-right: auto;
+  margin-left: auto; 
+  max-width: 250px;
+  /*color: black !important;*/
+  overflow: hidden;
+}
+
 
 /*SETTINGS
 ===================================*/
