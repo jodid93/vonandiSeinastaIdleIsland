@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.json.*;
+import org.springframework.boot.json.JsonParserFactory;
+
 public class DBconnector {
 
 	private Connection connection;
@@ -426,6 +429,70 @@ public void setGameState(String UN, String submitString, String score) throws SQ
     
 	
 }
+
+public int getSettings(String user) throws SQLException {
+	PreparedStatement pst;
+    Statement stmt = null;
+    
+    String data = "";
+    int settings = 0;
+    
+    try {
+    	pst = this.connection.prepareStatement("SELECT gamestate FROM gamestate WHERE id=?");
+		
+    	pst.setString(1, user);
+    	
+        ResultSet rs = pst.executeQuery();
+        int counter  = 0;
+        while (rs.next()) {
+        	System.out.println(counter);
+        	counter++;
+        	data += rs.getString("gamestate");
+        }
+        System.out.println(data);
+        JSONObject obj = new JSONObject(data);
+        settings = obj.getJSONObject("settings").getInt("audio-slider");
+
+
+        System.out.println("herna er settings vonandi : "+settings);
+        
+    } catch (SQLException e ) {
+        System.out.println(e);
+    } finally {
+        if (stmt != null) { stmt.close(); }
+    }
+    return settings;
+}
+
+public void setSettings(String user, int volume) throws SQLException {
+
+    
+    String Settings = getGameState(user);
+    JSONObject obj = new JSONObject(Settings).getJSONObject("settings");
+    obj.put("audio-slider",volume);
+    JSONObject obj2 = new JSONObject(Settings);
+    obj2.put("settings",obj);
+    int score = obj2.getInt("score");
+    String scr = Integer.toString(score);
+    
+    setGameState(user,obj2.toString(),scr);
+
+    
+}
+/*var values = [userN];
+var query = 
+  'SELECT gamestate FROM gamestate WHERE username=$1;';
+
+client.query(query, values, function (err, result) {      
+  done();
+  if (err) {
+    return cb(err);
+  } else {
+    var newGamestate = JSON.parse(result.rows[0].gamestate);
+    return cb(null, newGamestate.settings);
+  }
+});
+});*/
 
 
 

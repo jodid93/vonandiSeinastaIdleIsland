@@ -155,17 +155,42 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value="/settings")
-	public String settings( Model model, HttpSession session){
+	@RequestMapping(value="/settings", method = RequestMethod.GET)
+	public String settings( Model model, HttpSession session) throws SQLException{
+		
 		
 		if(session.getAttribute("loggedInUser") == null){
 			return "redirect:/login";
 		}
 		
+		int settings = this.DBconnector.getSettings((String) session.getAttribute("loggedInUser"));
+
 		String Message = "inn i settings";
+		model.addAttribute("value", settings);
 		model.addAttribute("skilabod", Message);
 		return "settings";
 	}
+	
+	@RequestMapping(value="/settings", method = RequestMethod.POST)
+	public String settingspost(@ModelAttribute("action") String value,@ModelAttribute("audio-slider") int volume,  Model model, HttpSession session) throws SQLException{
+		
+		
+		if(session.getAttribute("loggedInUser") == null){
+			return "redirect:/login";
+		}
+		
+		this.DBconnector.setSettings(session.getAttribute("loggedInUser").toString(), volume);
+		
+		if(value.equals("save")){
+			return "redirect:/menu";
+		}else if(value.equals("default")){
+			this.DBconnector.setSettings(session.getAttribute("loggedInUser").toString(), 20);
+			return "redirect:/settings";
+		}
+		return "settings";
+
+	}
+	
 	
 	@RequestMapping(value="/highScores", method = RequestMethod.POST)
 	public String highScores(@ModelAttribute("select") int value, Model model, HttpSession session) throws SQLException{

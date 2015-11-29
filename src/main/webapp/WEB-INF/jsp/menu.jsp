@@ -35,7 +35,7 @@
 						<input type="submit" value="View Friends" />
 					</form>
 					
-					<form action="/settings" method="post">
+					<form action="/settings" method="get">
 						<input type="submit" value="Settings" />
 					</form>
 					<br>

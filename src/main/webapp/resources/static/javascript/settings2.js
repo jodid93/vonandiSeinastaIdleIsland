@@ -1,6 +1,6 @@
 /*settings.js*/
 document.addEventListener('DOMContentLoaded',function() {
-	console.log('DOM loaded');
+	
 	settings.init();
 });
 
@@ -12,13 +12,6 @@ var settings = (function() {
 	
 
 	function init(){
-		console.log( "init!" );
-		cBoxFullS.on = false;
-		cBoxFullS.element1 = document.getElementById('checkbox-off');
-		cBoxFullS.element2 = document.getElementById('check-off');
-		cBoxFullS.element2 = document.getElementById('label-check-off');
-		cBoxFullS.element1.addEventListener('click', toggleCheckBoxBackground);
-		cBoxFullS.element2.addEventListener('click', toggleCheckBoxBackground);
 		
 		slider1.element1 = document.querySelector('.audio-slider');
 		slider1.element2 = document.querySelector('.audio-number');
@@ -46,21 +39,6 @@ var settings = (function() {
 				slider1[element].classList.add('audio-on');
 			}
 			slider1.element2.innerHTML=slider1.element1.value;
-		}
-	}
-
-	function toggleCheckBoxBackground( event ){
-		console.log(cBoxFullS.on);
-		if(cBoxFullS.on){
-			cBoxFullS.on = false;
-
-			cBoxFullS.element1.id = 'checkbox-off';
-			cBoxFullS.element2.id = 'label-check-off';
-
-		} else {
-			cBoxFullS.on = true;
-			cBoxFullS.element1.id = 'checkbox-on';
-			cBoxFullS.element2.id = 'label-check-on';
 		}
 	}
 
